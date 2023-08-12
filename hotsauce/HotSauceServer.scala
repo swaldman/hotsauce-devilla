@@ -25,14 +25,14 @@ object HotSauceServer extends ZIOAppDefault:
   )
 
   object TapirEndpoint:
-    val Base        = endpoint.in("api").in("hotsauces")
-    val GetAll      = Base.get.in(queryParams).errorOut(either404or500).out(jsonBody[List[HotSauce]])
-    val GetCount    = Base.get.in("count").errorOut(either404or500).out(jsonBody[Long])
-    val GetById     = Base.get.in(path[Long]).errorOut(either404or500).out(jsonBody[HotSauce])
-    val PostNoId    = Base.post.errorOut(either404or500).in(jsonBody[HotSauceData]).out(jsonBody[HotSauce])
-    val PostWithId  = Base.post.in(path[Long]).errorOut(either404or500).in(jsonBody[HotSauceData]).out(jsonBody[HotSauce])
-    val PutById     = Base.put.in(path[Long]).errorOut(either404or500).in(jsonBody[HotSauceData]).out(jsonBody[HotSauce])
-    val DeleteById  = Base.delete.in(path[Long]).errorOut(either404or500).out(jsonBody[HotSauce])
+    val Base        = endpoint.in("api").in("hotsauces").errorOut(either404or500)
+    val GetAll      = Base.get.in(queryParams).out(jsonBody[List[HotSauce]])
+    val GetCount    = Base.get.in("count").out(jsonBody[Long])
+    val GetById     = Base.get.in(path[Long]).out(jsonBody[HotSauce])
+    val PostNoId    = Base.post.in(jsonBody[HotSauceData]).out(jsonBody[HotSauce])
+    val PostWithId  = Base.post.in(path[Long]).in(jsonBody[HotSauceData]).out(jsonBody[HotSauce])
+    val PutById     = Base.put.in(path[Long]).in(jsonBody[HotSauceData]).out(jsonBody[HotSauce])
+    val DeleteById  = Base.delete.in(path[Long]).out(jsonBody[HotSauce])
   end TapirEndpoint
 
   def allFiltered( db : HotSauceDb )( params : QueryParams ) : ZOut[List[HotSauce]] =
