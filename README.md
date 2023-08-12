@@ -29,7 +29,7 @@ Once you run the server, you can hit the unauthenticated
 API immediately:
 
 ```zsh
-% % curl -i 'http://localhost:8080/api/hotsauces/?desc=All'
+% curl -i 'http://localhost:8080/api/hotsauces/?desc=All'
 HTTP/1.1 200 OK
 content-length: 558
 Content-Type: application/json
@@ -62,7 +62,7 @@ and then [how to get credentials](https://auth0.com/blog/build-and-secure-an-api
 
 In a nutshell, you 
 
-1. Make a free account on `auth0`
+1. [Make a free account](https://auth0.com/signup) on `auth0`
 2. Create a new API using the default `RS256` signing algorithm
 3. Retain the URL-ish `Identifier` you give it
 4. Look up (in the "Machine to Machine Applications" tab) and retain
@@ -95,7 +95,7 @@ Content-Type: application/json
 
 With each authenticated request, the server will print something like
 ```
-Decoded JWT: header={alg=RS256, typ=JWT, kid=M8YYbGPBjl7YNzuzm1Dnc},body={iss=https://dev-nkgozb3obkh3yqch.us.auth0.com/, sub=ojokl5P7EkyPBN2Vu7qcdqaIYDLDDtwm@clients, aud=https://hotsauces-devilla.example.mchange.com/, iat=1691883039, exp=1691969439, azp=ojokl5P7EkyPBN2Vu7qcdqaIYDLDDtwm, gty=client-credentials},signature=dYkYOZzPv77zZDpqwhCmuxio_oZWIVA9bydr5yCwqYcRrCdJRZW_bNzgHufI4LLM-fnVJsQP9pMl34yZGm4jDRzd9c8sEgeKaSozKL1HYW-g70epFAfGx0MG-STPVKMour4fE6ZMm3RkpApcxUrd4TL-lYRm5gDKZMX6XW0cgQSMJlM-PT5wuhkDiS-zqLFIkKhZplTjjbbxjjXxxbfF17EPBqi_og2X5T3FNpugejnfQH9EZiAZT4CXPea14NtaE2c3aZY0ivQPYn2bkoaV5WWwjGECsYP_e_HkA1rI994xv-ZXjbCNF7-4jRmOON1bUv_Nz0LB8X4mzKJDnYzD-g
+Decoded JWT: header={alg=RS256, typ=JWT, kid=M8YYbGPBjl7YNzuzm1Dnc},body={iss=https://<your-auth0-domain>.auth0.com/, sub=ojokl5P7EkyPBN2Vu7qcdqaIYDLDDtwm@clients, aud=https://hotsauces-devilla.example.mchange.com/, iat=1691883039, exp=1691969439, azp=ojokl5P7EkyPBN2Vu7qcdqaIYDLDDtwm, gty=client-credentials},signature=dYkYOZzPv77zZDpqwhCmuxio_oZWIVA9bydr5yCwqYcRrCdJRZW_bNzgHufI4LLM-fnVJsQP9pMl34yZGm4jDRzd9c8sEgeKaSozKL1HYW-g70epFAfGx0MG-STPVKMour4fE6ZMm3RkpApcxUrd4TL-lYRm5gDKZMX6XW0cgQSMJlM-PT5wuhkDiS-zqLFIkKhZplTjjbbxjjXxxbfF17EPBqi_og2X5T3FNpugejnfQH9EZiAZT4CXPea14NtaE2c3aZY0ivQPYn2bkoaV5WWwjGECsYP_e_HkA1rI994xv-ZXjbCNF7-4jRmOON1bUv_Nz0LB8X4mzKJDnYzD-g
 ```
 
 ### Credits
