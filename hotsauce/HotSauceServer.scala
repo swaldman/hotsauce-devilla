@@ -10,13 +10,9 @@ import sttp.tapir.{EndpointOutput, Schema}
 import sttp.tapir.server.ziohttp.ZioHttpInterpreter
 import zio.*
 import zio.http.Server
-
-// import pdi.jwt.{Jwt, JwtAlgorithm}
 import io.jsonwebtoken.Jwts
 import java.security.Key
 import java.security.cert.CertificateFactory
-
-
 
 object HotSauceServer extends ZIOAppDefault:
 
@@ -137,11 +133,12 @@ object HotSauceServer extends ZIOAppDefault:
   override def run =
     for
       args       <- getArgs
-      pemUrl     <- if args.size > 0 then ZIO.succeed(args(0)) else ZIO.fail("No URL provided to pem file of public key by which to decode the JWT token.")
-      key        = keyFromCertificatePemUrl(pemUrl)
+      pemUrl     <- if args.size > 0 then ZIO.succeed(args(0)) else ZIO.fail("No URL provided to pem file of certificate containing public key by which to decode the JWT token.")
+      key        =  keyFromCertificatePemUrl(pemUrl)
       db         <- ZIO.succeed( DemoHotSauceDb )
-      sEndpoints = serverEndpoints(key, db)
-      httpApp    = ZioHttpInterpreter().toHttp(sEndpoints)
+      sEndpoints =  serverEndpoints(key, db)
+      httpApp    =  ZioHttpInterpreter().toHttp(sEndpoints)
+      _          <- Console.printLine("Serving HotSauce API on port 8080...") // elegantly hard-coded!
       exitCode   <- Server.serve(httpApp.withDefaultErrorResponse).provide(ZLayer.succeed(Server.Config.default.port(8080)), Server.live).exitCode
     yield exitCode                           
 
