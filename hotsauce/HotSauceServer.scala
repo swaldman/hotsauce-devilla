@@ -134,18 +134,6 @@ object HotSauceServer extends ZIOAppDefault:
       val certificate = cf.generateCertificate(is)
       certificate.getPublicKey()
 
-    /*
-    // this would be from a PUBLIC KEY pem
-    // see https://stackoverflow.com/questions/24223275/when-to-use-x509encodedkeyspec-vs-rsapublickeyspec
-    Using.resource(Source.fromURL(pemUrl)): source =>
-      val goodStuff = source.getLines().filterNot( _.startsWith("-----")).mkString
-      val bytes = Base64.getDecoder().decode(goodStuff)
-      val keySpec = new X509EncodedKeySpec(bytes)
-      val kf = KeyFactory.getInstance("RSA"); // We expect an "RS256" (RSA) public key
-      kf.generatePublic(keySpec)
-    */
-
-
   override def run =
     for
       args       <- getArgs
