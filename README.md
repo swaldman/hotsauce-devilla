@@ -20,10 +20,11 @@ The application requires as its single command-line argument
 the URL of a certificate in pem format, from which an RSA public
 key can be read to decode the `RS256`-signed [JWT tokens](https://jwt.io/)
 that will be the application's authentication credentials.
-`auth0` provides a domain for each "tenant", from which among other blessings
+
+(`auth0` provides a domain for each "tenant", from which among other blessings
 you can download the certificate with the public key they use to
 sign the JWT tokens they will issue for your application. See [below](#auth0-prerequisites)
-for information on getting started with `auth0` if you'd like to try this app.
+for information on getting started with `auth0` if you'd like to try this app.)
 
 Once you run the server, you can hit the unauthenticated
 API immediately:
