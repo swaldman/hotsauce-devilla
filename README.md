@@ -108,4 +108,4 @@ Thank you Joey!
 ### Elsewhere
 
 You can find a write up of this project here:
-[Building an authenticated web service in Scala with tapir and JWT](https://tech.interfluidity.com/2023/08/13/building-an-authenticated-web-service-in-scala-with-tapir-and-jwt/index.html).
+[Building an authenticated web service in Scala with tapir and JWT](https://tech.interfluidity.com/2023/08/13/building-an-authenticated-web-service-in-scala-with-tapir-and-jwt/index.html)

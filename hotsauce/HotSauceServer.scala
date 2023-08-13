@@ -80,7 +80,6 @@ object HotSauceServer extends ZIOAppDefault:
 
   def authenticate( key : Key )( bearerToken : String ) : ZOut[AuthenticationInfo] =
     val task = ZIO.attempt:
-      //val decoded = Jwt.decode(bearerToken, secret, Seq(JwtAlgorithm.RS256)).get
       val decoded =
         Jwts.parserBuilder()
           .setSigningKey(key)
