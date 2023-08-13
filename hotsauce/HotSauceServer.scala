@@ -87,7 +87,7 @@ object HotSauceServer extends ZIOAppDefault:
           .build()
           .parse(bearerToken)
       println(s"Decoded JWT: ${decoded}")
-      AuthenticationInfo() // someday, maybe I'll look into the decoded key and include real information
+      AuthenticationInfo() // someday, maybe I'll inspect the decoded key and include real information
     mapPlainError(task)
 
   def createNew( db : HotSauceDb )( auth : AuthenticationInfo )( data : HotSauceData ) : ZOut[HotSauce] =
